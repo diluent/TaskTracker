@@ -1,0 +1,43 @@
+﻿<script>
+
+    define("tasks/feed", function () {
+
+        function ViewModel() {
+            var data = [{ id: 123, name: "sfrhsth", status: "Активно", executor: "Иванов И." }];
+            this.items = ko.observableArray(data);
+        }
+
+        return function() {
+            ko.applyBindings(new ViewModel());
+        }
+
+    });
+
+    require("tasks/feed", function (model) {
+        model();
+    });
+
+</script>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>описание</th>
+                <th>статус</th>
+                <th>исполнитель</th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: items">
+            <tr>
+                <td data-bind="text: id"></td>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: status"></td>
+                <td data-bind="text: executor"></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
